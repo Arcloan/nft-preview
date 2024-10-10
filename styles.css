@@ -1,0 +1,143 @@
+:root {
+    --soft-blue: hsl(215, 51%, 70%);
+    --cyan: hsl(178, 100%, 50%);
+    --very-dark-blue: hsl(217, 54%, 11%);
+    --very-dark-blue-card: hsl(216, 50%, 16%);
+    --very-dark-blue-line: hsl(215, 32%, 27%);
+    --white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, main {
+    display: grid;
+    place-items: center;
+}
+
+body {
+    background-color: var(--very-dark-blue);
+    height: 100svh;
+}
+
+.card {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--very-dark-blue-card);
+    max-inline-size: 35ch;
+}
+
+.card > * + * {
+    margin-block-start: 1rem;
+}
+
+.card__img {
+    border-radius: 1rem;
+    display: block;
+    max-width: 100%;
+}
+
+.card:has(.card__img-wrapper:hover) {
+    cursor: pointer;
+
+    & .card__img-wrapper::after {
+        display: block;
+    }
+
+    & .card__img-wrapper::before {
+        display: block;
+    }
+}
+
+.card__img-wrapper {
+    position: relative;
+}
+
+.card__img-wrapper::after {
+    content: "";
+    inset: 0;
+    border-radius: 1rem;
+    position: absolute;
+    background-color: hsla(178, 100%, 50%, 0.5);
+    display: none;
+}
+
+.card__img-wrapper::before {
+    content: url(images/icon-view.svg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: none;
+}
+
+.card__title {
+    color: var(--white);
+    font-size: 1.2rem;
+
+    &:hover {
+        cursor: pointer;
+        color: var(--cyan);
+    }
+}
+
+.card__description {
+    color: var(--soft-blue);
+}
+
+.card__price-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--cyan);
+}
+
+.card__remaining-time {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--soft-blue);
+}
+
+hr {
+    color: var(--very-dark-blue-line);
+}
+
+.card__creator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--soft-blue);
+
+    & span {
+        color: var(--white);
+
+        &:hover {
+            cursor: pointer;
+            color: var(--cyan);
+        }
+    }
+}
+
+.card__creator-name {
+    font-size: 0.9rem;
+}
+
+.card__creator-img {
+    border-radius: 50%;
+    height: 2rem;
+    aspect-ratio: 1 / 1;
+}
